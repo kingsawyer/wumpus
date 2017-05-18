@@ -69,7 +69,7 @@ The existing wumpus_ai.py file already works - it uses the random module to make
 Included in the directory is the standard map and some new maps. Each map has a PDF file showing what it looks like. Do not assume the map numbering will remain constant from run to run.
 
 # Submission
-Email your Python code to pycon2017@box.com. Your code will be run on the standard map, one of the custom maps, and one map you have not seen yet. All programs will be run with the same maps and random seeds. Deadline is Sunday, May 21 at 3:00pm. Prize pickup immediately after. Participants can collect their coffee mugs any time after submitting a program that reaches the 4000 point average on the 3 maps. Headphones can be mailed to you if you have to leave the conference before the end.
+Email your Python code to pycon2017@box.com. Your code will be run on the standard map, one of the custom maps, and one map you have not seen yet. All programs will be run with the same maps and random seeds. Deadline is Sunday, May 21 at 3:00pm. Grand prize pickup at 4pm after the conference closing. Participants can collect their coffee mugs any time after submitting a program that reaches the 4000 point average on the 3 maps by visiting one of the dedicated open spaces sessions. Headphones can be mailed to you if you have to leave the conference before the Sunday wrapup. But... aren't you going to stay for the sprints? :-)
 
 # Open Spaces
 Check the Open Spaces board to find a room to work on the problem, get some help, or pickup a coffee mug. We'd love to meet you!
