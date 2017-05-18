@@ -1,6 +1,6 @@
 # Hunt The Wumpus!
 
-Top scores get Brookstone Rhapsody Bluetooth Headphones
+Top scores get Brookstone Rhapsody Bluetooth Headphones!
 
 Participants get a Box branded coffee mug. (Must average 4000 on 100 runs on 3 maps)
 
@@ -60,7 +60,16 @@ Download and run wumpus_ui.py (you will also need to download standard.txt to ge
 The wumpus game has been modified a little bit from the original for this contest, perhaps the most visible difference is the addition of a score. Getting killed results in a score of 0, while winning results in a score of 100 minus the number of moves taken. Shooting is free. If you shoot the wumpus without moving from your starting location you will get a score of 100.
 
 # Time to bring in the computer!
-After you have played a game or two yourself, you're ready to write your own wumpus hunting program. Open up wumpus_ai.py and take a look at status_callback() which tells you about your current situation and perform_move and perform_shoot which are the two actions you can take. The wumpus_ui.py file is similar but asks the user to input the decisions.
+After you have played a game or two yourself, you're ready to write your own wumpus hunting program. Open up wumpus_ai.py and take a look at status_callback() which tells you about your current situation and perform_move and perform_shoot which are the two actions you can take. The wumpus_ui.py file is similar but asks the user to input the decisions. The status_callback method is called from the game host, so don't add or remove parameters, but perform_move and perform_shoot can be altered and you can also add more members to the Player object itself to keep track of the rooms you've visited and where the wumpus might be located.
 
 # Wait, is it already working?
-The existing wumpus_ai.py file already works - it uses random to make the decisions. It also plays 100 games so you can see how well it performs on average: about 2,500 out of a possible 10,000
+The existing wumpus_ai.py file already works - it uses the random module to make the decisions. It also plays 100 games so you can see how well it performs on average: about 2,500 out of a possible 10,000. Even blundering about, it does ok.
+
+# Running on different maps
+Included in the directory is the standard map and some new maps. Each map has a PDF file showing what it looks like. Do not assume the map numbering will remain constant from run to run.
+
+# Submission
+Email your Python code to pycon2017@box.com. Your code will be run on the standard map, one of the custom maps, and one map you have not seen yet. All programs will be run with the same maps and random seeds. Deadline is Sunday, May 21 at 3:00pm. Prize pickup immediately after. Participants can collect their coffee mugs any time after submitting a program that reaches the 4000 point average on the 3 maps. Headphones can be mailed to you if you have to leave the conference before the end.
+
+# Open Spaces
+Check the Open Spaces board to find a room to work on the problem, get some help, or pickup a coffee mug. We'd love to meet you!
