@@ -89,7 +89,7 @@ class WMap(object):
                 return WumpusHost.TOO_CROOKED
         arrow_location = hunter
         result = WumpusHost.WUMPUS_MISSED
-        for room in room_list[1:5]:
+        for room in room_list[1:6]:
             passages = self.rooms[arrow_location].outs + self.rooms[arrow_location].ins
             if room in passages:
                 arrow_location = room
