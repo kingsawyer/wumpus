@@ -13,7 +13,7 @@ class Player(object):
         """Gives the current status. Whether you are near a pit, bats, or wumpus. You can
         move to any of the exits. You could have come in through any of the entrances. Yes,
         Some maps, like waterslide, have steep, one-way passages. You can shoot an arrow through
-        either entrances or exits. There will always be 20 rooms, each with 3 entrances and 3 exits.
+        either entrances or exits. There will always be 20 rooms, each 3 exits.
 
         DO NOT CHANGE THE PARAMETER LIST. This is called from the game host.
         """
