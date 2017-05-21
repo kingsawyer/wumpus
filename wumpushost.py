@@ -129,7 +129,7 @@ class WumpusHost(object):
         self._hunter = self._map.init(self._seed)
         while self._playing:
             room = self._map.rooms[self._hunter]
-            status_callback(room.near_pit, room.near_bats, room.near_wumpus, self._hunter, room.outs, room.ins)
+            status_callback(room.near_pit, room.near_bats, room.near_wumpus, self._hunter, list(room.outs), list(room.ins))
         return self._score
 
     def move(self, new_room):
