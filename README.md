@@ -1,8 +1,6 @@
 # Hunt The Wumpus!
 
-Top scores get Brookstone Rhapsody Bluetooth Headphones!
-
-Participants get a Box branded coffee mug. Come on and try it
+Play interactively or build your own program to hunt the wumpus.
 
 # Play a game
 Download and run wumpus_ui.py (you will also need to download standard.txt to get the standard map). This will let you play the classic game on the standard map. Here are the instructions taken from the BASIC source code. The original BASIC source code is also in the repo if you want to take a look (It's amazing how small it is!)
