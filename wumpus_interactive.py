@@ -1,16 +1,14 @@
 import random
-try: input = raw_input
-except NameError: pass
 
 from wumpushost import WumpusHost
 
+
 class Player(object):
-    def __init__(self, seed, mapfile):
-        self.host = WumpusHost(seed, mapfile)
+    def __init__(self, a_seed, map_file):
+        self.host = WumpusHost(a_seed, map_file, show_graphics=True, delay=0)
 
     def play(self):
         return self.host.play(self.status_callback)
-
 
     def status_callback(self, near_pit, near_bats, near_wumpus, room, exits, entrances):
         if near_pit:
@@ -29,7 +27,7 @@ class Player(object):
         decision = input('Move or Shoot? (m or s) ')
         if decision in ['m', 'M']:
             self.perform_move()
-        elif decision in ['s','S']:
+        elif decision in ['s', 'S']:
             self.perform_shoot()
         else:
             print("That's not an option in this game.")
@@ -65,10 +63,11 @@ class Player(object):
         elif result == WumpusHost.OUT_OF_ARROWS:
             print("WHIZZ! Oh no! Out of arrows. At night the ice weasels come for you...")
         elif result == WumpusHost.SHOT_SELF:
-            print("LOOK OUT! Thunk! You shot yourself.")
+            print("LOOK OUT! Thunk! You shot yourself!")
+
 
 if __name__ == '__main__':
-    player = Player(random.randint(0, 1000), 'standard.txt')
+    player = Player(random.randint(0, 1000), 'mobius.txt')
     print("""
         WELCOME TO 'HUNT THE WUMPUS'
 

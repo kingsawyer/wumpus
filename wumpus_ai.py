@@ -2,12 +2,11 @@ import random
 from wumpushost import WumpusHost
 
 class Player(object):
-    def __init__(self, seed, mapfile):
-        self.host = WumpusHost(seed, mapfile)
+    def __init__(self, a_seed, map_file):
+        self.host = WumpusHost(a_seed, map_file, show_graphics=True, delay=0.5)
 
     def play(self):
         return self.host.play(self.status_callback)
-
 
     def status_callback(self, near_pit, near_bats, near_wumpus, room, exits, entrances):
         """Gives the current status. Whether you are near a pit, bats, or wumpus. You can
@@ -23,7 +22,7 @@ class Player(object):
             print('I hear bats!')
         if near_wumpus:
             print('I smell a wumpus!')
-        print('You are in room {}. Tunnels lead to {}.'.format(
+        print('You are in (0-based) room {}. Tunnels lead to {}.'.format(
             room,
             [x for x in exits]
         ))
@@ -54,7 +53,7 @@ class Player(object):
 
     def perform_shoot(self, all_ways):
         """Perform a shoot action. Free free to change the parameters paassed to this function"""
-        room_list = [random.choice(all_ways)]
+        room_list = [random.choice(all_ways)]  # note this strategy always use a list of length 1
         print('shooting along path {}'.format(room_list))
         result = self.host.shoot(room_list)
         if result == WumpusHost.TOO_CROOKED:
@@ -72,7 +71,7 @@ class Player(object):
 
 if __name__ == '__main__':
     total = 0
-    for seed in range(0,100):
+    for seed in range(0, 100):
         player = Player(seed, 'standard.txt')
         print('\nhunting the wumpus! - seed {}'.format(seed))
         score = player.play()
