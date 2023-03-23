@@ -8,8 +8,8 @@ Download and run wumpus_interactive.py (you will also need to download standard.
        WELCOME TO 'HUNT THE WUMPUS'
 
         THE WUMPUS LIVES IN A CAVE OF 20 ROOMS: EACH ROOM HAS 3 TUNNELS LEADING TO OTHER
-        ROOMS. THE STANDARD MAP IS A ICOSAHEDRON (IF YOU DON'T KNOW WHAT A
-        ICOSAHEDRON IS, ASK SOMEONE)
+        ROOMS. THE STANDARD MAP IS A DODECAHEDRON (IF YOU DON'T KNOW WHAT A
+        DODECAHEDRON IS, ASK SOMEONE)
 
         ***
         HAZARDS:
@@ -56,6 +56,9 @@ Download and run wumpus_interactive.py (you will also need to download standard.
         PIT - 'I FEEL A DRAFT'
 
 The wumpus game has been modified a little from the original for this event, perhaps the most visible difference is the addition of a score. Getting killed results in a score of 0, while winning results in a score of 100 minus the number of moves taken. Shooting is free. If you shoot the wumpus without moving from your starting location you will get a score of 100.
+
+# Play the game
+Run `python wumpus_interactive.py` and play the classic game for yourself. See if you can figure out a good strategy. How often do you win or lose? What information are you keeping track of?
 
 # Time to bring in the computer!
 After you have played a game or two yourself, you're ready to write your own wumpus hunting program. Open up wumpus_ai.py and take a look at status_callback() which tells you about your current situation and perform_move and perform_shoot which are the two actions you can take. The wumpus_ui.py file is similar but asks the user to input the decisions. The status_callback method is called from the game host, so don't add or remove parameters, but perform_move and perform_shoot can be altered and you can also add more members to the Player object itself to keep track of the rooms you've visited and where the wumpus might be located. The room numbers will range from 0-19 (the ui adds one to make it 1-based for humans, but 0-based is nicer for computers)
