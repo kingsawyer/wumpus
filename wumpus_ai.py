@@ -1,9 +1,10 @@
 import random
-from wumpushost import WumpusHost
+from wumpushost import ActionResult, WumpusHost
 
-class Player(object):
+
+class Player:
     def __init__(self, a_seed, map_file):
-        self.host = WumpusHost(a_seed, map_file, show_graphics=True, delay=0.5)
+        self.host = WumpusHost(a_seed, map_file, show_graphics=True, delay=3)
 
     def play(self):
         return self.host.play(self.status_callback)
@@ -30,6 +31,7 @@ class Player(object):
         if visible:
             print("You can also see (but cannot get to) {}".format(visible))
 
+        # HERE IS THE AMAZING RANDOM STRATEGY!
         if near_wumpus:
             self.perform_shoot(exits + entrances)
         else:
@@ -42,32 +44,33 @@ class Player(object):
         result, bats_picked_up = self.host.move(new_room)
         if bats_picked_up:
             print('ZAP -- Super Bat snatch! Elsewhereville for you!')
-        if result == WumpusHost.MET_WUMPUS:
+        if result == ActionResult.MET_WUMPUS:
             print('TSK TSK TSK - Wumpus got you!')
-        elif result == WumpusHost.FELL_IN_PIT:
+        elif result == ActionResult.FELL_IN_PIT:
             print('YYYIIIIEEEE . . . Fell in a pit.')
-        elif result == WumpusHost.EXHAUSTED:
+        elif result == ActionResult.EXHAUSTED:
             print('OOF! You collapse from exhaustion.')
-        elif result == WumpusHost.NOT_AN_EXIT:
+        elif result == ActionResult.NOT_AN_EXIT:
             print("BONK! That's not a possible move.")
 
     def perform_shoot(self, all_ways):
-        """Perform a shoot action. Free free to change the parameters paassed to this function"""
+        """Perform a shoot action. Feel free to change the parameters passed to this function"""
         room_list = [random.choice(all_ways)]  # note this strategy always use a list of length 1
         print('shooting along path {}'.format(room_list))
         result = self.host.shoot(room_list)
-        if result == WumpusHost.TOO_CROOKED:
+        if result == ActionResult.TOO_CROOKED:
             print("Arrows aren't that crooked - try another room")
-        elif result == WumpusHost.WUMPUS_MISSED:
+        elif result == ActionResult.WUMPUS_MISSED:
             print("SWISH! The wumpus didn't like that. He may have moved to a quieter room")
-        elif result == WumpusHost.WUMPUS_KILLED:
+        elif result == ActionResult.WUMPUS_KILLED:
             print("AHA! You got the wumpus!")
-        elif result == WumpusHost.KILLED_BY_GROGGY_WUMPUS:
+        elif result == ActionResult.KILLED_BY_GROGGY_WUMPUS:
             print("CLANG! Missed and a groggy wumpus just ate you!")
-        elif result == WumpusHost.OUT_OF_ARROWS:
+        elif result == ActionResult.OUT_OF_ARROWS:
             print("WHIZZ! Oh no! Out of arrows. At night the ice weasels come for you...")
-        elif result == WumpusHost.SHOT_SELF:
+        elif result == ActionResult.SHOT_SELF:
             print("LOOK OUT! Thunk! You shot yourself.")
+
 
 if __name__ == '__main__':
     total = 0

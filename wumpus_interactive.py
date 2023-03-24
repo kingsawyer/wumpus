@@ -1,11 +1,11 @@
 import random
 
-from wumpushost import WumpusHost
+from wumpushost import ActionResult, WumpusHost
 
 
-class Player(object):
+class Player:
     def __init__(self, a_seed, map_file):
-        self.host = WumpusHost(a_seed, map_file, show_graphics=True, delay=0)
+        self.host = WumpusHost(a_seed, map_file, show_graphics=False)
 
     def play(self):
         return self.host.play(self.status_callback)
@@ -38,31 +38,31 @@ class Player(object):
         result, bats_picked_up = self.host.move(new_room)
         if bats_picked_up:
             print('ZAP -- Super Bat snatch! Elsewhereville for you!')
-        if result == WumpusHost.MET_WUMPUS:
+        if result == ActionResult.MET_WUMPUS:
             print('TSK TSK TSK - Wumpus got you!')
-        elif result == WumpusHost.FELL_IN_PIT:
+        elif result == ActionResult.FELL_IN_PIT:
             print('YYYIIIIEEEE . . . Fell in a pit.')
-        elif result == WumpusHost.EXHAUSTED:
+        elif result == ActionResult.EXHAUSTED:
             print('OOF! You collapse from exhaustion.')
-        elif result == WumpusHost.NOT_AN_EXIT:
+        elif result == ActionResult.NOT_AN_EXIT:
             print("BONK! That's not a possible move.")
 
     def perform_shoot(self):
         """Perform a shoot action"""
         rooms = input('You can shoot up to five rooms, separate rooms with a comma ')
-        room_list = [int(x) -1 for x in rooms.split(',')]
+        room_list = [int(x) - 1 for x in rooms.split(',')]
         result = self.host.shoot(room_list)
-        if result == WumpusHost.TOO_CROOKED:
+        if result == ActionResult.TOO_CROOKED:
             print("Arrows aren't that crooked - try another room")
-        elif result == WumpusHost.WUMPUS_MISSED:
+        elif result == ActionResult.WUMPUS_MISSED:
             print("SWISH! The wumpus didn't like that. He may have moved to a quieter room")
-        elif result == WumpusHost.WUMPUS_KILLED:
+        elif result == ActionResult.WUMPUS_KILLED:
             print("AHA! You got the wumpus!")
-        elif result == WumpusHost.KILLED_BY_GROGGY_WUMPUS:
+        elif result == ActionResult.KILLED_BY_GROGGY_WUMPUS:
             print("CLANG! Missed and a groggy wumpus just ate you!")
-        elif result == WumpusHost.OUT_OF_ARROWS:
+        elif result == ActionResult.OUT_OF_ARROWS:
             print("WHIZZ! Oh no! Out of arrows. At night the ice weasels come for you...")
-        elif result == WumpusHost.SHOT_SELF:
+        elif result == ActionResult.SHOT_SELF:
             print("LOOK OUT! Thunk! You shot yourself!")
 
 
