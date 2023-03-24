@@ -4,7 +4,7 @@ from wumpushost import ActionResult, WumpusHost
 
 class Player:
     def __init__(self, a_seed, map_file):
-        self.host = WumpusHost(a_seed, map_file, show_graphics=True, delay=3)
+        self.host = WumpusHost(a_seed, map_file, show_graphics=False, delay=3)
 
     def play(self):
         return self.host.play(self.status_callback)
@@ -33,7 +33,8 @@ class Player:
 
         # HERE IS THE AMAZING RANDOM STRATEGY!
         if near_wumpus:
-            self.perform_shoot(exits + entrances)
+            room_list = [random.choice(exits + entrances)]  # note this strategy always use a list of length 1
+            self.perform_shoot(room_list)
         else:
             self.perform_move(exits)
 
@@ -53,9 +54,8 @@ class Player:
         elif result == ActionResult.NOT_AN_EXIT:
             print("BONK! That's not a possible move.")
 
-    def perform_shoot(self, all_ways):
+    def perform_shoot(self, room_list):
         """Perform a shoot action. Feel free to change the parameters passed to this function"""
-        room_list = [random.choice(all_ways)]  # note this strategy always use a list of length 1
         print('shooting along path {}'.format(room_list))
         result = self.host.shoot(room_list)
         if result == ActionResult.TOO_CROOKED:

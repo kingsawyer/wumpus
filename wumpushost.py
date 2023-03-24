@@ -346,7 +346,8 @@ class WumpusHost:
                 if self._moves >= 100:
                     self._playing = False
                     result = ActionResult.EXHAUSTED
-            self._queue.put(result)
+            if self._show_graphics:
+                self._queue.put(result)
         return result, bats_involved
 
     def shoot(self, room_list):
