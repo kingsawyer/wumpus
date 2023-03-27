@@ -23,8 +23,8 @@ class ActionResult(Enum):
 
 
 _SCREEN_DIM = 800
-_ROOM_SIZE = 20  # fraction of screen
-_INDICATOR_SIZE = 40  # fraction of screen size
+_ROOM_SIZE = 20  # fraction of screen dim
+_INDICATOR_SIZE = 40  # fraction of screen dim
 
 
 class Room:
@@ -191,7 +191,7 @@ class WumpusHost:
         self._delay = delay if show_graphics else 0
         self._screen_dim = _SCREEN_DIM
         self._circle_radius = self._screen_dim / _ROOM_SIZE
-        self._root = Tk()
+        self._root = Tk() if show_graphics else None
         self._canvas = None
         self._move_indicator = None
         self._can_show_result = ThreadEvent()
@@ -293,16 +293,15 @@ class WumpusHost:
         self._hunter = self._map.init(self._seed)
         if self._show_graphics:
             self.setup_canvas()
-        t = Thread(target=self.player_loop, name='player', args=[status_callback])
-        t.start()
-        if self._show_graphics:
+            player_thread = Thread(target=self.player_loop, name='player', args=[status_callback])
+            player_thread.start()
             self._root.mainloop()
             self._root = None
             if self._playing:
                 print('quitting early via UI')
             self._playing = False
         else:
-            t.join()
+            self.player_loop(status_callback)
         return self._score
 
     def player_loop(self, status_callback):
