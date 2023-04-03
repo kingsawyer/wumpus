@@ -68,8 +68,11 @@ After you have played a game or two yourself, you're ready to write your own wum
 # Wait, is it already working?
 The existing wumpus_ai.py file already works - it uses the random module to make the decisions. It also plays 100 games so you can see how well it performs on average: about 2,500 out of a possible 10,000. Even blundering about, it does ok.
 
+# Turning on Graphics
+The wumpushost file can show a graphic representation of the game. Try turning it on for the wumpus_ai.py file. Look for this line `WumpusHost(a_seed, map_file, show_graphics=False, delay=3)` where you can turn on show_graphics and adjust how many seconds to pause between moves.
+
 # Running on different maps
-Included in the directory is the standard map and some new maps (möbius strip, water slide, and Risk(r)). Each map has a PDF file showing what it looks like. Do not assume the map numbering will remain constant from run to run. That is, use the data given to you from status_callback to gradually fill in your world view instead of reading the map files directly. We reserve the right to randomize the room labels before starting the game. Cheater. You _can_ assume there will always be 20 rooms and each room has 3 ways out.
+Included in the directory is the standard map and some new maps (möbius strip, water slide, and Risk(r)). Each map has a PDF file showing what it looks like. Do not assume the map numbering will remain constant from run to run. That is, use the data given to you from status_callback to gradually fill in your world view instead of reading the map files directly. We reserve the right to randomize the room labels before starting the game! You _can_ assume there will always be 20 rooms and each room has 3 ways out. There will always be 2 pits, 2 bats, and 1 wumpus.
 
 # Submission
 For the event your code will be run on the standard map, one of the custom maps, and one map you have not seen yet. All programs will be run with the same maps and random seed ranges. Programs that reach 4000+ point average on the 3 maps are winners.
