@@ -1,6 +1,6 @@
 # Hunt The Wumpus!
 
-Play interactively or build your own program to hunt the wumpus.
+Play interactively or build your own program to hunt the wumpus. If you are a teacher, you are welcome to use this project in your class, plus contact me to get secret maps so you can have a competition with the student bots against known and unknown maps!
 
 # Play a game
 Download the repo and run wumpus_interactive.py. This will let you play the classic game on the standard map. Here are the instructions taken from the BASIC source code. The original BASIC source code is also in the repo if you want to take a look or run the original code if you have a BASIC interpreter. (It's amazing how small it is!) It's in wumpus.basic
